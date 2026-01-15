@@ -27,4 +27,11 @@
 
 # “When a PV has ReclaimPolicy=Retain and is Released, Kubernetes will not rebind it. The admin must manually remove claimRef to make it Available again.”
 
-# I had special requirement i need to specific node  ===> node selector 
+# I had special requirement i need to specific node 
+  
+#  NODE SELECTOR ===> Node Selector is a Kubernetes feature used to decide on which node a pod should run.
+# It works by matching pod requirements with labels assigned to nodes.
+# Only nodes with matching labels are eligible to run the pod.
+# If no matching node is found, the pod remains in Pending state.
+# It helps control and organize workload placement in a cluster.
+# Node Selector is a Kubernetes feature used to run a pod on a specific node by matching node labels.

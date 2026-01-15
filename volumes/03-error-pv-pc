@@ -26,3 +26,5 @@
 # "If a PV with ReclaimPolicy=Retain is released, Kubernetes will not automatically reuse it. The claimRef must be manually cleared to make it Available again."
 
 # “When a PV has ReclaimPolicy=Retain and is Released, Kubernetes will not rebind it. The admin must manually remove claimRef to make it Available again.”
+
+# I had special requirement i need to specific node  ===> node selector 

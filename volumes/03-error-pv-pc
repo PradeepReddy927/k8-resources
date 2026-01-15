@@ -1,0 +1,28 @@
+# Edit the PV and remove old claimRef
+  # storage: 15Gi
+  # claimRef:
+  #   apiVersion: v1
+  #   kind: PersistentVolumeClaim
+  #   name: ebs-static
+  #   namespace: default
+  #   resourceVersion: "9705"
+  #   uid: c973e3c0-d7ae-41b4-9f3d-5a127124aadd
+
+# Delete the entire claimRef block, so it becomes 
+ # claimRef: null 
+ 
+
+
+# Check PV status 
+  # kubectl get pv
+
+# Delete & recreate PVC
+# kubectl delete pvc ebs-static
+# kubectl apply -f pvc.yaml
+
+  
+# Interview-ready explanation
+
+# "If a PV with ReclaimPolicy=Retain is released, Kubernetes will not automatically reuse it. The claimRef must be manually cleared to make it Available again."
+
+# “When a PV has ReclaimPolicy=Retain and is Released, Kubernetes will not rebind it. The admin must manually remove claimRef to make it Available again.”

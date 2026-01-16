@@ -10,7 +10,7 @@ Node Selector forces the pod to run on the correct node.
 
 Without nodeSelector, the pod may go to another node and fail.
 
-So: Node Selector is required to match the pod with the existing volume.
+So Node Selector is required to match the pod with the existing volume.
 
 
 # Dynamic Provisioning – Why Node Selector is NOT needed
@@ -25,4 +25,4 @@ The volume is created in the same node/AZ as the pod.
 
 Because Kubernetes handles everything, nodeSelector is not required.
 
-So: Kubernetes automatically matches pod and volume.
+So Kubernetes automatically matches pod and volume.

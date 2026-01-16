@@ -1,0 +1,1 @@
+“With VolumeBindingMode=WaitForFirstConsumer, PVC and Pod remain Pending until the scheduler assigns a node. If EBS CSI driver or IAM permissions are missing, volume provisioning fails and the pod never schedules.”

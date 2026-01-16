@@ -31,3 +31,8 @@ spec:
   - name: nginx-html
     persistentVolumeClaim:
       claimName: efs-dynamic
+
+
+# IMPORTANT 
+
+# In EFS file what we created persistent volume , persistent pod , It gives access point in efs files       

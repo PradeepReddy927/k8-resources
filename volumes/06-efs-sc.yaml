@@ -8,3 +8,6 @@ parameters:
   fileSystemId: fs-0bafc88e2e953846a
   directoryPerms: "700"
   basePath: "/roboshop" # optional
+
+
+  # dynamic storecalss

@@ -1,3 +1,4 @@
+# persistent volume
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -15,6 +16,7 @@ spec:
     volumeHandle: fs-0e01a3e28b42258c7
 
 ---
+# persistentclaim    
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -26,3 +28,25 @@ spec:
   resources:
     requests:
       storage: 5Gi
+
+---
+# persistentPod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: efs-static
+spec:
+  containers:
+  - name: app
+    image: nginx
+    volumeMounts:
+    - name: nginx-html
+      mountPath: /usr/share/nginx/html
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1b
+  volumes:
+  - name: nginx-html
+    persistentVolumeClaim:
+      claimName: efs-static

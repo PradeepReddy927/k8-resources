@@ -52,7 +52,7 @@ spec:
   - name: nginx-html
     persistentVolumeClaim:
       claimName: ebs-static
-
+# persistent pod
 ---
 
 apiVersion: v1

@@ -1,4 +1,4 @@
-# headless service 
+# headless service
 apiVersion: v1
 kind: Service
 metadata:
@@ -14,7 +14,6 @@ spec:
   selector:
     app: nginx
     purpose: stateful-demo
-
 ---
 # normal service
 apiVersion: v1
@@ -30,10 +29,8 @@ spec:
     name: web
   selector:
     app: nginx
-    purpose : stateful-demo
-
+    purpose: stateful-demo
 ---
-#
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -41,17 +38,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx # has to match .spec.template.metadata.labels
-      purpose: stateful-demo
-  serviceName: "nginx-headless" # This should be headless service name
+      app: nginx
+      purpose: stateful-demo # has to match .spec.template.metadata.labels
+  serviceName: "nginx-headless" # this should be head less service name
   replicas: 3 # by default is 1
   template:
     metadata:
       labels:
-        app: nginx # has to match .spec.selector.matchLabels
-        purpose: stateful-demo
+        app: nginx
+        purpose: stateful-demo # has to match .spec.selector.matchLabels
     spec:
-      terminationGracePeriodSeconds: 10
       containers:
       - name: nginx
         image: nginx
@@ -61,7 +57,7 @@ spec:
         volumeMounts:
         - name: www
           mountPath: /usr/share/nginx/html
-  # THIS IS PVC        
+  # This is PVC
   volumeClaimTemplates:
   - metadata:
       name: www
@@ -71,4 +67,3 @@ spec:
       resources:
         requests:
           storage: 1Gi
-

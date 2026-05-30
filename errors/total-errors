@@ -1,0 +1,20 @@
+CreateContainerConfigError
+
+CreateContainerConfigError occurs when Kubernetes fails while preparing the container configuration before the container starts. This happens after the pod is scheduled to a node but before the image is executed. Common causes include missing ConfigMaps or Secrets, incorrect environment variable references, or invalid container specifications. In this state, the container never starts running. Logs are not available because the container has not been created. The issue can be diagnosed using kubectl describe pod
+
+CrashLoopBackOff
+
+CrashLoopBackOff occurs when a container starts successfully but crashes repeatedly. Kubernetes attempts to restart the container multiple times and increases the delay between restarts. This error usually happens due to application-level issues such as wrong configuration, database connection failure, or incorrect command or entrypoint. Logs are available and should be checked using kubectl logs. Unlike configuration errors, the container actually runs briefly before failing.
+
+ErrImagePull / ImagePullBackOff
+
+ErrImagePull happens when Kubernetes is unable to download the container image from the registry. If the failure continues, the pod enters ImagePullBackOff state, where Kubernetes pauses further retry attempts. Common reasons include incorrect image name or tag, private image without credentials, or Docker registry rate limits. This error occurs before the container starts. It can be diagnosed using kubectl describe pod.
+
+Pending
+
+A pod remains in Pending state when Kubernetes cannot schedule it to any node. This usually happens due to insufficient CPU or memory, unbound PersistentVolumeClaims, node selector mismatch, or taints and tolerations issues. The pod is accepted by the cluster but not assigned to a node. No container is created in this state. The scheduling issue can be identified using kubectl describe pod.
+
+
+ContainerCreating
+
+ContainerCreating indicates that Kubernetes has scheduled the pod to a node and is in the process of setting it up. This includes pulling the container image, attaching volumes, and configuring networking. It is a normal and temporary state during pod startup. If the pod stays in this state for a long time, it may indicate issues with image pull, storage, or CNI networking. Normally, it transitions to Running once setup is complete.

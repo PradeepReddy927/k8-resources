@@ -1,0 +1,3 @@
+# In EKS, the in-tree kubernetes.io/aws-ebs provisioner is deprecated. Dynamic provisioning requires the aws-ebs-csi-driver and a CSI-based StorageClass like ebs.csi.aws.com.
+
+# StatefulSet pods were pending because the PVC could not bind. After installing the EBS CSI driver and creating a CSI-based StorageClass, dynamic EBS volumes were provisioned and the pods moved to Running state
